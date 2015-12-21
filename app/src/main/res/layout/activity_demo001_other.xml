@@ -7,27 +7,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="itmp.top.demo.Demo001">
+    tools:context="itmp.top.demo.Demo001_other">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/demo001_linear"
-        android:weightSum="1">
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/demo001_edit"
-        android:layout_weight="1" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/demo001_button"
-        android:text="@string/demo001_sendmessage"/>
-    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/demo001_text"
-        android:layout_below="@id/demo001_linear"/>
+        android:id="@+id/demo001_other_text"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/demo001_other_button"
+        android:text="@string/demo001_goback"
+        android:layout_below="@+id/demo001_other_text"/>
 </RelativeLayout>

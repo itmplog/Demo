@@ -15,16 +15,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Demo001"
+        <activity
+            android:name=".Demo001"
             android:label="Demo 001"
             android:parentActivityName=".MainActivity">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
-
-
-
-
+        <activity android:name=".Demo001_other"
+            android:label="Demo001 Other"
+            android:parentActivityName=".Demo001">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Demo001"/>
+        </activity>
     </application>
 
 </manifest>

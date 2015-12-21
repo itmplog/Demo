@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Demo</string>
+    <string name="demo001_sendmessage">Send Message</string>
+    <string name="demo001_goback">Go Back</string>
 </resources>
