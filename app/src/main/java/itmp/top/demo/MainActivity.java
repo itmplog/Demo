@@ -1,5 +1,6 @@
 package itmp.top.demo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 1:
+                Intent intent = new Intent(MainActivity.this, Demo001.class);
+                startActivity(intent);
                 break;
             case 2:
                 break;
