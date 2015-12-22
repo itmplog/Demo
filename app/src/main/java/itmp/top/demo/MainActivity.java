@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import itmp.top.demo.images.ImageGrid;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, 1, 0, getString(R.string.demo001_sendmessage)).setIcon(android.R.drawable.ic_menu_mapmode);
-        menu.add(0, 2, 0, "demo 002").setIcon(android.R.drawable.ic_menu_mapmode);
+        menu.add(0, 2, 0, getString(R.string.imagegrid)).setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 3, 0, "demo 003").setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 4, 0, "demo 004").setIcon(android.R.drawable.ic_menu_mapmode);
         return super.onCreateOptionsMenu(menu);
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 2:
+                Intent intent1 = new Intent(MainActivity.this, ImageGrid.class);
+                startActivity(intent1);
                 break;
             case 3:
                 break;
