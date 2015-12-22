@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 1, 0, "demo 001").setIcon(android.R.drawable.ic_menu_mapmode);
+        menu.add(0, 1, 0, getString(R.string.demo001_sendmessage)).setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 2, 0, "demo 002").setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 3, 0, "demo 003").setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 4, 0, "demo 004").setIcon(android.R.drawable.ic_menu_mapmode);
