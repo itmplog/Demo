@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Demo001"
+            android:name=".intents.Demo001"
             android:label="@string/demo001_sendmessage"
             android:parentActivityName=".MainActivity">
             <meta-data
@@ -27,12 +27,12 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".Demo001_other"
+            android:name=".intents.Demo001_other"
             android:label="Demo001 Other"
-            android:parentActivityName=".Demo001">
+            android:parentActivityName=".intents.Demo001">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Demo001" />
+                android:value=".intents.Demo001" />
         </activity>
         <activity
             android:name=".images.ImageGrid"

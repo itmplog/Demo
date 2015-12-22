@@ -1,4 +1,4 @@
-package itmp.top.demo;
+package itmp.top.demo.intents;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.sql.BatchUpdateException;
+
+import itmp.top.demo.R;
 
 public class Demo001_other extends AppCompatActivity {
 
