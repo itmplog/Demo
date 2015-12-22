@@ -3,4 +3,5 @@
     <string name="demo001_sendmessage">Send Message</string>
     <string name="demo001_goback">Go Back</string>
     <string name="imagegrid">Image Grid</string>
+    <string name="picpick">Pic Pick</string>
 </resources>

@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.jar.Manifest;
+
 import itmp.top.demo.images.ImageGrid;
+import itmp.top.demo.images.PicPick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, 1, 0, getString(R.string.demo001_sendmessage)).setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 2, 0, getString(R.string.imagegrid)).setIcon(android.R.drawable.ic_menu_mapmode);
-        menu.add(0, 3, 0, "demo 003").setIcon(android.R.drawable.ic_menu_mapmode);
+        menu.add(0, 3, 0, getString(R.string.picpick)).setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 4, 0, "demo 004").setIcon(android.R.drawable.ic_menu_mapmode);
         return super.onCreateOptionsMenu(menu);
     }
@@ -37,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent1);
                 break;
             case 3:
+                Intent intent2 = new Intent(MainActivity.this, PicPick.class);
+                startActivity(intent2);
                 break;
             case 4:
                 break;
