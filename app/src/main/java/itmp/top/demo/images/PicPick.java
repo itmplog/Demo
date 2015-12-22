@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.security.Permission;
 
 import itmp.top.demo.R;
@@ -101,7 +103,9 @@ public class PicPick extends AppCompatActivity {
                     cursor.close();
 
                     ImageView imageView = (ImageView) findViewById(R.id.imgView);
-                    imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                    //imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                    Picasso.with(this).load(picturePath)
+                            .centerCrop().into(imageView);
                     break;
 
                 }else{
