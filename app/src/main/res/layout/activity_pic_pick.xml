@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0"
         android:text="Load Picture"
-        android:layout_below="@+id/imgView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="center"></Button>
 </RelativeLayout>
