@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 
+import itmp.top.demo.images.BitmapTest;
 import itmp.top.demo.images.ImageGrid;
 import itmp.top.demo.images.PicPick;
 import itmp.top.demo.intents.Demo001;
@@ -41,13 +42,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, Demo001.class);
                 startActivity(intent);
                 break;
-            case 2:
+            case 201:
                 Intent intent1 = new Intent(MainActivity.this, ImageGrid.class);
                 startActivity(intent1);
                 break;
-            case 3:
+            case 202:
                 Intent intent2 = new Intent(MainActivity.this, PicPick.class);
                 startActivity(intent2);
+                break;
+            case 203:
+                Intent intent3 = new Intent(MainActivity.this, BitmapTest.class);
+                startActivity(intent3);
                 break;
             case 4:
                 break;
