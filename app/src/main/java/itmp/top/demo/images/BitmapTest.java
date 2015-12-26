@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,6 +37,7 @@ public class BitmapTest extends AppCompatActivity {
         try {
             assetManager = getAssets();
             images = assetManager.list("");
+            Log.d("images", images.length + images[0].getBytes().toString());
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -78,20 +80,18 @@ public class BitmapTest extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(currentImg == images.length){
-                    Toast.makeText(getApplicationContext(), "No pics", Toast.LENGTH_SHORT).show();
-                    return;
-                }
                 if(currentImg >= images.length){
                     currentImg = 0;
                 }
 
-                while(!images[currentImg].endsWith(".png")
+
+                while(!images[++currentImg].endsWith(".png")
                         && !images[currentImg].endsWith(".jpg")
                         && !images[currentImg].endsWith(".gif")){
                     currentImg++;
                     if(currentImg >= images.length){
                         currentImg = 0;
+                        break;
                     }
                 }
                 InputStream assetFile = null;
