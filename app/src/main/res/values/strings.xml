@@ -7,4 +7,5 @@
     <string name="picpick">Pic Pick</string>
     <string name="bitmaptest">Bitmap Test</string>
     <string name="canvastest">Canvas Test</string>
+    <string name="handdraw">Hand Draw</string>
 </resources>

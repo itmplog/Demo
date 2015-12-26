@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 
 import itmp.top.demo.canvas.CanvasTest;
+import itmp.top.demo.canvas.HandDrawTest;
 import itmp.top.demo.images.BitmapTest;
 import itmp.top.demo.images.ImageGrid;
 import itmp.top.demo.images.PicPick;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(0, 3, 0, getString(R.string.picpick)).setIcon(android.R.drawable.ic_menu_mapmode);
         */
         menu.add(0, 2, 0, getString(R.string.canvastest)).setIcon(android.R.drawable.ic_menu_mapmode);
-
+        menu.add(0, 3, 0, getString(R.string.handdraw)).setIcon(android.R.drawable.ic_menu_mapmode);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -60,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent4 = new Intent(MainActivity.this, CanvasTest.class);
                 startActivity(intent4);
                 break;
-
+            case 3:
+                Intent intent5 = new Intent(MainActivity.this, HandDrawTest.class);
+                startActivity(intent5);
+                break;
             default:
             return super.onOptionsItemSelected(item);
         }
