@@ -1,5 +1,6 @@
 package itmp.top.demo.canvas;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -21,14 +23,22 @@ public class HandDraw extends View {
     float preY;
     private Path path;
     public Paint paint = null;
-    final  int VIEW_WIDTH = 1080;
-    final int VIEW_HEIGHT = 1920;
+    int canvasWidth = 0;
+    int canvasHeight = 0;
+    //final  int VIEW_WIDTH = 1080;
+    //final int VIEW_HEIGHT = 1920;
     Bitmap cacheBitmap = null;
     Canvas cacheCanvas = null;
     public HandDraw(Context context, AttributeSet set){
         super(context, set);
 
-        cacheBitmap = Bitmap.createBitmap(VIEW_WIDTH, VIEW_HEIGHT, Bitmap.Config.ARGB_8888);
+        // set default canvas
+        DisplayMetrics metrics = new DisplayMetrics();
+        ((Activity)context).getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        canvasWidth = metrics.widthPixels;
+        canvasHeight = metrics.heightPixels;
+
+        cacheBitmap = Bitmap.createBitmap(canvasWidth, canvasHeight, Bitmap.Config.ARGB_8888);
         cacheCanvas = new Canvas();
         path = new Path();
         cacheCanvas.setBitmap(cacheBitmap);
@@ -38,6 +48,7 @@ public class HandDraw extends View {
         paint.setStrokeWidth(10);
         paint.setAntiAlias(true);
         paint.setDither(true);
+
     }
 
     @Override

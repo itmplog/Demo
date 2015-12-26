@@ -47,7 +47,7 @@ public class HandDrawTest extends AppCompatActivity {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handDraw.cacheBitmap = Bitmap.createBitmap(handDraw.VIEW_WIDTH, handDraw.VIEW_HEIGHT, Bitmap.Config.ARGB_8888);
+                handDraw.cacheBitmap = Bitmap.createBitmap(handDraw.canvasWidth, handDraw.canvasHeight, Bitmap.Config.ARGB_8888);
                 handDraw.cacheCanvas = new Canvas();
                 handDraw.cacheCanvas.setBitmap(handDraw.cacheBitmap);
                 handDraw.invalidate();
