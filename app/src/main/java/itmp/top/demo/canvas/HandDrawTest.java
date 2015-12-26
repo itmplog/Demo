@@ -11,5 +11,6 @@ public class HandDrawTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hand_draw_test);
+        //setContentView(new HandDraw(this));
     }
 }

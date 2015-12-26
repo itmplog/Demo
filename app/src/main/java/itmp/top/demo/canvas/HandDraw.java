@@ -21,8 +21,8 @@ public class HandDraw extends View {
     float preY;
     private Path path;
     public Paint paint = null;
-    final  int VIEW_WIDTH = 768;
-    final int VIEW_HEIGHT = 1366;
+    final  int VIEW_WIDTH = 1080;
+    final int VIEW_HEIGHT = 1920;
     Bitmap cacheBitmap = null;
     Canvas cacheCanvas = null;
     public HandDraw(Context context, AttributeSet set){
@@ -33,9 +33,9 @@ public class HandDraw extends View {
         path = new Path();
         cacheCanvas.setBitmap(cacheBitmap);
         paint = new Paint(Paint.DITHER_FLAG);
-        paint.setColor(Color.parseColor("#8444"));
+        paint.setColor(Color.parseColor("#DD303F9F"));
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(1);
+        paint.setStrokeWidth(10);
         paint.setAntiAlias(true);
         paint.setDither(true);
     }
