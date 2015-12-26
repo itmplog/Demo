@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 
+import itmp.top.demo.canvas.CanvasTest;
 import itmp.top.demo.images.BitmapTest;
 import itmp.top.demo.images.ImageGrid;
 import itmp.top.demo.images.PicPick;
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
         menu.add(0, 2, 0, getString(R.string.imagegrid)).setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 3, 0, getString(R.string.picpick)).setIcon(android.R.drawable.ic_menu_mapmode);
         */
-        menu.add(0, 4, 0, "demo 004").setIcon(android.R.drawable.ic_menu_mapmode);
+        menu.add(0, 2, 0, getString(R.string.canvastest)).setIcon(android.R.drawable.ic_menu_mapmode);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -54,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent3 = new Intent(MainActivity.this, BitmapTest.class);
                 startActivity(intent3);
                 break;
-            case 4:
+            case 2:
+                Intent intent4 = new Intent(MainActivity.this, CanvasTest.class);
+                startActivity(intent4);
                 break;
 
             default:
