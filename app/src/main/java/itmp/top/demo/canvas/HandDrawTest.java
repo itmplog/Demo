@@ -1,5 +1,7 @@
 package itmp.top.demo.canvas;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BlurMaskFilter;
@@ -8,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.CornerPathEffect;
 import android.graphics.EmbossMaskFilter;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,12 +20,15 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
+import itmp.top.demo.MainActivity;
 import itmp.top.demo.R;
 
 public class HandDrawTest extends AppCompatActivity {
@@ -31,6 +38,7 @@ public class HandDrawTest extends AppCompatActivity {
     private Button clear = null;
     private EmbossMaskFilter embossMaskFilter = null;
     private BlurMaskFilter blur = null;
+    private final int REQUIREPERMISSION_RTN = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +77,21 @@ public class HandDrawTest extends AppCompatActivity {
                /* Bitmap bitmap = Bitmap.createBitmap(1080, 1920, Bitmap.Config.ARGB_8888);
                 handDraw.cacheCanvas.drawBitmap(bitmap, 0, 0, null);
                 bitmap.compress(Bitmap.CompressFormat.PNG, 80, strm); */
-                handDraw.cacheBitmap.compress(Bitmap.CompressFormat.PNG, 100, strm);
-                try {
-                    strm.close();
-                }catch (IOException e){
-                    e.printStackTrace();
+                if (ContextCompat.checkSelfPermission(HandDrawTest.this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(HandDrawTest.this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            REQUIREPERMISSION_RTN);
+                }else {
+                    handDraw.cacheBitmap.compress(Bitmap.CompressFormat.PNG, 100, strm);
+                    Toast.makeText(getApplicationContext(), "Save Success.", Toast.LENGTH_SHORT).show();
+                    try {
+                        strm.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-
             }
         });
 
@@ -135,5 +151,35 @@ public class HandDrawTest extends AppCompatActivity {
 
         //return super.onOptionsItemSelected(item);
         return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUIREPERMISSION_RTN:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    File saveCanvas = new File(Environment.getExternalStorageDirectory() + File.separator + "saveCanvas.png");
+                    FileOutputStream strm = null;
+                    try{
+                        strm = new FileOutputStream(saveCanvas);
+                    }catch (FileNotFoundException e){
+                        e.printStackTrace();
+                    }
+                    handDraw.cacheBitmap.compress(Bitmap.CompressFormat.PNG, 100, strm);
+                    Toast.makeText(getApplicationContext(), "Save Success.", Toast.LENGTH_SHORT).show();
+                    try {
+                        strm.close();
+                    }catch (IOException e){e.printStackTrace();}
+                    return;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Need Permission to save file", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            default:
+                Toast.makeText(getApplicationContext(), "Need Permission to save file", Toast.LENGTH_SHORT).show();
+                return;
+        }
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
     }
 }
