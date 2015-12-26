@@ -5,6 +5,9 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.Button;
 
@@ -52,5 +55,23 @@ public class HandDrawTest extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //MenuInflater inflater = new MenuInflater(this);
+        //inflater.inflate(R.menu.handdraw, menu);
+        //menu.add(0, 1, 0,"Color");
+        SubMenu subMenu = menu.addSubMenu(0, 100, 0, "Color");
+        subMenu.add(0, 101, 0, "Red");
+        subMenu.add(0, 102, 0, "Green");
+        subMenu.add(0, 103, 0, "Blue");
+        SubMenu subMenu1 = menu.addSubMenu(1, 200, 0, "Width");
+        subMenu1.add(1, 201, 0, "width_1");
+        subMenu1.add(1, 203, 0, "width_3");
+        subMenu1.add(1, 205, 0, "width_5");
+        menu.add(2, 3, 0, "blur");
+        menu.add(2, 4, 0, "emboss");
+        return super.onCreateOptionsMenu(menu);
     }
 }

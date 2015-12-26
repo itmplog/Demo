@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Color">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/red"
+                    android:title="Red"/>
+                <item android:id="@+id/green"
+                    android:title="Green"/>
+                <item android:id="@+id/blue"
+                    android:title="Blue"/>
+            </group>
+        </menu>
+    </item>
+    <item android:title="Width">
+        <menu>
+            <group>
+                <item android:id="@+id/width_1"
+                    android:title="Width_1"/>
+                <item android:id="@+id/width_3"
+                    android:title="Width_3"/>
+                <item android:id="@+id/width_5"
+                    android:title="Width_5"/>
+            </group>
+        </menu>
+    </item>
+    <item android:id="@+id/blur"
+        android:title="Blur"/>
+    <item android:id="@+id/emboss"
+        android:title="Emboss"/>
+</menu>
