@@ -3,6 +3,7 @@ package itmp.top.demo.canvas;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BlurMaskFilter;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.CornerPathEffect;
 import android.graphics.EmbossMaskFilter;
@@ -26,7 +27,8 @@ import itmp.top.demo.R;
 public class HandDrawTest extends AppCompatActivity {
 
     private HandDraw handDraw = null;
-    private Button button;
+    private Button button = null;
+    private Button clear = null;
     private EmbossMaskFilter embossMaskFilter = null;
     private BlurMaskFilter blur = null;
 
@@ -40,6 +42,17 @@ public class HandDrawTest extends AppCompatActivity {
                 1.5f, 1.5f, 1.5f
         }, 0.6f, 6, 4.2f);
         blur = new BlurMaskFilter(8, BlurMaskFilter.Blur.NORMAL);
+
+        clear = (Button)findViewById(R.id.clear);
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                handDraw.cacheBitmap = Bitmap.createBitmap(handDraw.VIEW_WIDTH, handDraw.VIEW_HEIGHT, Bitmap.Config.ARGB_8888);
+                handDraw.cacheCanvas = new Canvas();
+                handDraw.cacheCanvas.setBitmap(handDraw.cacheBitmap);
+                handDraw.invalidate();
+            }
+        });
 
         button = (Button)findViewById(R.id.saveCanvas);
         button.setOnClickListener(new View.OnClickListener() {

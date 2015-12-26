@@ -9,4 +9,5 @@
     <string name="canvastest">Canvas Test</string>
     <string name="handdraw">Hand Draw</string>
     <string name="save">Save</string>
+    <string name="clear">Clear</string>
 </resources>
