@@ -9,6 +9,7 @@ import android.view.SubMenu;
 
 import itmp.top.demo.canvas.CanvasTest;
 import itmp.top.demo.canvas.HandDrawTest;
+import itmp.top.demo.canvas.PinBall;
 import itmp.top.demo.images.BitmapTest;
 import itmp.top.demo.images.ImageGrid;
 import itmp.top.demo.images.PicPick;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         */
         menu.add(0, 2, 0, getString(R.string.canvastest)).setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 3, 0, getString(R.string.handdraw)).setIcon(android.R.drawable.ic_menu_mapmode);
+        menu.add(0, 4, 0, getString(R.string.pinball)).setIcon(android.R.drawable.ic_menu_mapmode);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -64,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
             case 3:
                 Intent intent5 = new Intent(MainActivity.this, HandDrawTest.class);
                 startActivity(intent5);
+                break;
+            case 4:
+                Intent intent6 = new Intent(MainActivity.this, PinBall.class);
+                startActivity(intent6);
                 break;
             default:
             return super.onOptionsItemSelected(item);
