@@ -42,6 +42,7 @@ public class PinBall extends AppCompatActivity {
 
     private float tx = 0;
     private float rect = 0;
+    private int count = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
         // 去掉窗口标题
@@ -91,10 +92,10 @@ public class PinBall extends AppCompatActivity {
                         rect = event.getX() - tx;
                         Log.v("rect", "Down: " + tx + "\tUp: " + event.getX() + "\t rect: " + rect);
 
-                        if(rect > 0 && rect >= 200){
+                        if(rect > 0 && rect >= 200 && racketX <=  tableWidth - RACKET_WIDTH){
                             racketX += 100;
                         }
-                        if(rect < 0 && rect <= -200){
+                        if(rect < 0 && rect <= -200 && racketX >= 0){
                             racketX -= 100;
                         }
                 }
@@ -117,6 +118,9 @@ public class PinBall extends AppCompatActivity {
                         ballY >= racketY - BALL_SIZE
                                 && ballX > racketX && ballX <= racketX + RACKET_WIDTH
                 )) {
+                    if(ballY > 0) {
+                        count++;
+                    }
                     ySpeed = -ySpeed;
                 }
                 ballY += ySpeed;
@@ -150,6 +154,11 @@ public class PinBall extends AppCompatActivity {
 
                 paint.setColor(Color.rgb(80, 80, 200));
                 canvas.drawRect(racketX, racketY, racketX + RACKET_WIDTH, racketY + RACKET_HEIGHT, paint);
+
+                if(count > 0){
+                    paint.setTextSize(100);
+                    canvas.drawText("Sock: " + count , 20, tableHeight, paint);
+                }
             }
         }
     }
