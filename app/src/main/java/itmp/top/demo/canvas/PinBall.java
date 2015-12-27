@@ -59,7 +59,8 @@ public class PinBall extends AppCompatActivity {
         windowManager.getDefaultDisplay().getMetrics(displayMetrics);
 
         tableHeight = displayMetrics.heightPixels;
-        tableHeight = 1920;
+        //tableHeight = 1920;
+        tableHeight = displayMetrics.heightPixels;
         tableWidth = displayMetrics.widthPixels;
 
         racketY = tableHeight - 80;
