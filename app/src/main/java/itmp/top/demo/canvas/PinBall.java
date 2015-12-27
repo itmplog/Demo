@@ -1,6 +1,8 @@
 package itmp.top.demo.canvas;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -19,7 +21,8 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-//import itmp.top.demo.R;
+import itmp.top.demo.R;
+
 
 public class PinBall extends AppCompatActivity {
 
@@ -133,9 +136,14 @@ public class PinBall extends AppCompatActivity {
 
     public class GameView extends View {
         Paint paint = new Paint();
+        Bitmap bitmap = null;
         public GameView(Context context){
             super(context);
             setFocusable(true);
+
+            //BitmapFactory.Options options = new BitmapFactory.Options();
+            //options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test);
         }
 
         @Override
@@ -143,6 +151,9 @@ public class PinBall extends AppCompatActivity {
             //super.onDraw(canvas);
             paint.setStyle(Paint.Style.FILL);
             paint.setAntiAlias(true);
+
+            canvas.drawBitmap(bitmap, 0, 0, new Paint());
+
             if (isLose) {
                 paint.setTextSize(40);
 
@@ -157,7 +168,7 @@ public class PinBall extends AppCompatActivity {
 
                 if(count > 0){
                     paint.setTextSize(100);
-                    canvas.drawText("Sock: " + count , 20, tableHeight, paint);
+                    canvas.drawText("Sock: " + count , 20, tableHeight + 20, paint);
                 }
             }
         }
