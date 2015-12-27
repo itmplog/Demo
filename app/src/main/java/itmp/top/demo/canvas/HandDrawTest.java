@@ -2,18 +2,20 @@ package itmp.top.demo.canvas;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.CornerPathEffect;
 import android.graphics.EmbossMaskFilter;
+import android.graphics.Matrix;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,9 +28,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-
-import itmp.top.demo.MainActivity;
 import itmp.top.demo.R;
 
 public class HandDrawTest extends AppCompatActivity {
@@ -66,13 +65,6 @@ public class HandDrawTest extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File saveCanvas = new File(Environment.getExternalStorageDirectory() + File.separator + "saveCanvas.png");
-                FileOutputStream strm = null;
-                try{
-                    strm = new FileOutputStream(saveCanvas);
-                }catch (FileNotFoundException e){
-                    e.printStackTrace();
-                }
                 //Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + File.separator + "saveCanvas.png");
                /* Bitmap bitmap = Bitmap.createBitmap(1080, 1920, Bitmap.Config.ARGB_8888);
                 handDraw.cacheCanvas.drawBitmap(bitmap, 0, 0, null);
@@ -84,6 +76,13 @@ public class HandDrawTest extends AppCompatActivity {
                             new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                             REQUIREPERMISSION_RTN);
                 }else {
+                    File saveCanvas = new File(Environment.getExternalStorageDirectory() + File.separator + "saveCanvas.png");
+                    FileOutputStream strm = null;
+                    try{
+                        strm = new FileOutputStream(saveCanvas);
+                    }catch (FileNotFoundException e){
+                        e.printStackTrace();
+                    }
                     handDraw.cacheBitmap.compress(Bitmap.CompressFormat.PNG, 100, strm);
                     Toast.makeText(getApplicationContext(), "Save Success.", Toast.LENGTH_SHORT).show();
                     try {
@@ -189,5 +188,58 @@ public class HandDrawTest extends AppCompatActivity {
         }
         //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
+    }
+
+    //  add orientation change update
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        //super.onConfigurationChanged(newConfig);
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            //int tmp = 1920 - handDraw.canvasHeight;
+            Log.v("metrics", "width" + handDraw.canvasWidth + "height" + handDraw.canvasHeight);
+            handDraw.canvasHeight = displayMetrics.heightPixels;
+            handDraw.canvasWidth = displayMetrics.widthPixels;
+            Log.v("metrics", displayMetrics.toString());
+
+            Matrix matrix = new Matrix();
+            matrix.reset();
+            matrix.postRotate(90);
+            Bitmap bitmap = Bitmap.createBitmap(handDraw.cacheBitmap, 0, 0, handDraw.cacheBitmap.getWidth(),
+                   handDraw.cacheBitmap.getHeight(), matrix, true);
+            handDraw.cacheBitmap = bitmap;
+            handDraw.cacheCanvas.setBitmap(bitmap);
+            handDraw.invalidate();
+            /*
+            handDraw.cacheBitmap = Bitmap.createBitmap(handDraw.canvasWidth, handDraw.canvasHeight, Bitmap.Config.ARGB_8888);
+            handDraw.cacheCanvas = new Canvas();
+            handDraw.cacheCanvas.setBitmap(handDraw.cacheBitmap);
+            */
+        } else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            //int tmp = 1920 - handDraw.canvasHeight;
+            Log.v("metrics", "width" + handDraw.canvasWidth + "height" + handDraw.canvasHeight);
+            handDraw.canvasHeight = displayMetrics.heightPixels;
+            handDraw.canvasWidth = displayMetrics.widthPixels;
+            Log.v("metrics", displayMetrics.toString());
+            /*
+            handDraw.cacheBitmap = Bitmap.createBitmap(handDraw.canvasWidth, handDraw.canvasHeight, Bitmap.Config.ARGB_8888);
+            handDraw.cacheCanvas = new Canvas();
+            handDraw.cacheCanvas.setBitmap(handDraw.cacheBitmap);
+            */
+
+            Matrix matrix = new Matrix();
+            matrix.reset();
+            matrix.postRotate(90);
+            Bitmap bitmap = Bitmap.createBitmap(handDraw.cacheBitmap, 0, 0, handDraw.cacheBitmap.getWidth(),
+                    handDraw.cacheBitmap.getHeight(), matrix, true);
+            handDraw.cacheBitmap = bitmap;
+            handDraw.cacheCanvas.setBitmap(bitmap);
+            handDraw.invalidate();
+        }
+        super.onConfigurationChanged(newConfig);
     }
 }
