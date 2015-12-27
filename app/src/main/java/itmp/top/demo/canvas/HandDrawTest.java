@@ -103,6 +103,7 @@ public class HandDrawTest extends AppCompatActivity {
         //inflater.inflate(R.menu.handdraw, menu);
         //menu.add(0, 1, 0,"Color");
         SubMenu subMenu = menu.addSubMenu(0, 100, 0, "Color");
+        subMenu.add(0, 99, 0, "Black");
         subMenu.add(0, 101, 0, "Red");
         subMenu.add(0, 102, 0, "Green");
         subMenu.add(0, 103, 0, "Blue");
@@ -120,6 +121,10 @@ public class HandDrawTest extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case 99:
+                handDraw.paint.setColor(Color.BLACK);
+                item.setChecked(true);
+                break;
             case 101:
                 handDraw.paint.setColor(Color.RED);
                 item.setChecked(true);
