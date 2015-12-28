@@ -45,6 +45,8 @@ public class HandDrawTest extends AppCompatActivity {
         setContentView(R.layout.activity_hand_draw_test);
         //setContentView(new HandDraw(this));
         handDraw = (HandDraw)findViewById(R.id.handdraw);
+        //getSupportActionBar().setHomeButtonEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);  doesnot work;
         embossMaskFilter = new EmbossMaskFilter(new float[]{
                 1.5f, 1.5f, 1.5f
         }, 0.6f, 6, 4.2f);
