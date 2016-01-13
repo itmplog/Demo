@@ -1,11 +1,26 @@
 package itmp.top.demo;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import itmp.top.demo.canvas.CanvasTest;
 import itmp.top.demo.canvas.HandDrawTest;
@@ -19,10 +34,75 @@ import itmp.top.demo.intents.Demo001;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ListView listView = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        listView = (ListView)findViewById(R.id.list_item);
+
+
+       /*final PackageManager pm = getPackageManager();
+
+        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+        List<ResolveInfo> appList = pm.queryIntentActivities(mainIntent, 0);
+        Collections.sort(appList, new ResolveInfo.DisplayNameComparator(pm));
+
+        for (ResolveInfo temp : appList) {
+
+            Log.v("my logs", "package and activity name = "
+                    + temp.activityInfo.packageName + "    "
+                    + temp.activityInfo.name);
+        // get all MainActivity & Package Name
+
+        }
+        */
+        PackageInfo packageInfo = null;
+
+        final ArrayList<String> arrayList = new ArrayList<String>();
+        final ArrayList<String> classNames = new ArrayList<String>();
+
+        try {
+            packageInfo = getPackageManager().getPackageInfo(this.getPackageName(), PackageManager.GET_ACTIVITIES);
+        }catch (PackageManager.NameNotFoundException e){
+            e.printStackTrace();
+        }
+        for(ActivityInfo activityInfo : packageInfo.activities){
+            //Log.v("info", activityInfo.toString());
+            //mActivities = new ArrayList<ActivityInfo>(Arrays.asList(packageInfo.activities));
+            if(activityInfo.parentActivityName != null){
+                classNames.add(activityInfo.name);
+                arrayList.add(activityInfo.name.substring(activityInfo.name.lastIndexOf('.') + 1));
+            }
+            Log.v("ac", activityInfo.name);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                intent.setClassName(getPackageName(), classNames.get(position));
+                startActivity(intent);
+            }
+        });
+    }
+
+    public static ArrayList<String> getActivities(Context ctx) {
+        ArrayList<String> result = new ArrayList<String>();
+        Intent intent = new Intent(Intent.ACTION_MAIN, null);
+        intent.setPackage(ctx.getPackageName());
+
+        for (ResolveInfo info : ctx.getPackageManager().queryIntentActivities(intent, 0)) {
+            result.add(info.activityInfo.name);
+        }
+        return result;
     }
 
     @Override

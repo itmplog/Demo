@@ -9,5 +9,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="itmp.top.demo.MainActivity">
 
-
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_item"/>
 </RelativeLayout>
