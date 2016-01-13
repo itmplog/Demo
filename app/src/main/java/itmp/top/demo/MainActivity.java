@@ -10,6 +10,7 @@ import android.view.SubMenu;
 import itmp.top.demo.canvas.CanvasTest;
 import itmp.top.demo.canvas.HandDrawTest;
 import itmp.top.demo.canvas.MatrixView;
+import itmp.top.demo.canvas.MoveBack;
 import itmp.top.demo.canvas.PinBall;
 import itmp.top.demo.images.BitmapTest;
 import itmp.top.demo.images.ImageGrid;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(0, 3, 0, getString(R.string.handdraw)).setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 4, 0, getString(R.string.pinball)).setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 5, 0, getString(R.string.matrixview)).setIcon(android.R.drawable.ic_menu_mapmode);
+        menu.add(0, 6, 0, getString(R.string.moveback));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -76,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
             case 5:
                 Intent intent7 = new Intent(MainActivity.this, MatrixView.class);
                 startActivity(intent7);
+                break;
+            case 6:
+                Intent intent8 = new Intent(MainActivity.this, MoveBack.class);
+                startActivity(intent8);
                 break;
             default:
             return super.onOptionsItemSelected(item);
