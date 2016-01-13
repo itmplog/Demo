@@ -50,7 +50,7 @@ public class MoveBack extends AppCompatActivity {
                     if(startY <= 0){
                         startY = BACK_HEIGHT - HEIGHT;
                     } else {
-                        startY -= 30;
+                        startY -= 10;
                     }
                     invalidate();
                 }
@@ -61,7 +61,7 @@ public class MoveBack extends AppCompatActivity {
                 public void run() {
                     handler.sendEmptyMessage(0x123);
                 }
-            }, 0, 100);
+            }, 0, 50);
         }
 
         @Override
