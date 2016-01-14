@@ -13,4 +13,5 @@
     <string name="pinball">Pin Ball</string>
     <string name="matrixview">Matrix View</string>
     <string name="moveback">Move Back</string>
+    <string name="wraptest">Wrap Test</string>
 </resources>
