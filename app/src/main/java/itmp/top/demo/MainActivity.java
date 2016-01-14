@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             Log.v("ac", activityInfo.name);
         }
 
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
         listView.setAdapter(adapter);
 
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+/*
     public static ArrayList<String> getActivities(Context ctx) {
         ArrayList<String> result = new ArrayList<String>();
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
@@ -102,9 +103,11 @@ public class MainActivity extends AppCompatActivity {
         for (ResolveInfo info : ctx.getPackageManager().queryIntentActivities(intent, 0)) {
             result.add(info.activityInfo.name);
         }
+        List<ResolveInfo> resolveInfos = ctx.getPackageManager().queryIntentActivities(intent, 0);
+        Log.v("ctx", resolveInfos.toString() + "   " + resolveInfos.size());
         return result;
     }
-
+*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, 1, 0, getString(R.string.demo001_sendmessage)).setIcon(android.R.drawable.ic_menu_mapmode);
