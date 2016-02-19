@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
 
+import itmp.top.demo.animation.AnimatorTest;
 import itmp.top.demo.animation.MyAnimation;
 import itmp.top.demo.canvas.CanvasTest;
 import itmp.top.demo.canvas.HandDrawTest;
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 1, 0, getString(R.string.demo001_sendmessage)).setIcon(android.R.drawable.ic_menu_mapmode);
+        menu.add(0, 100, 0, getString(R.string.demo001_sendmessage)).setIcon(android.R.drawable.ic_menu_mapmode);
         SubMenu subMenu =  menu.addSubMenu(0, 200, 0, getString(R.string.images)).setIcon(android.R.drawable.ic_menu_mapmode);
         subMenu.add(1, 201, 0, getString(R.string.imagegrid)).setIcon(R.drawable.plane);
         subMenu.add(1, 202, 0, getString(R.string.picpick)).setIcon(R.drawable.plane);
@@ -145,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
         subMenu1.add(0, 5, 0, getString(R.string.matrixview)).setIcon(android.R.drawable.ic_menu_mapmode);
         subMenu1.add(0, 6, 0, getString(R.string.moveback)).setIcon(R.drawable.plane);
         subMenu1.add(0, 7, 0, getString(R.string.wraptest)).setIcon(R.drawable.plane);
+
+        menu.add(0, 400, 0, getString(R.string.animatortest));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -191,6 +194,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent9 = new Intent(MainActivity.this, WrapTest.class);
                 startActivity(intent9);
                 break;
+            case 400:
+                Intent intent10 = new Intent(MainActivity.this, AnimatorTest.class);
+                startActivity(intent10);
             default:
             return super.onOptionsItemSelected(item);
         }

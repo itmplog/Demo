@@ -15,4 +15,5 @@
     <string name="moveback">Move Back</string>
     <string name="wraptest">Wrap Test</string>
     <string name="canvas">Canvas</string>
+    <string name="animatortest">AnimatorTest</string>
 </resources>
