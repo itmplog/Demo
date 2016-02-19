@@ -4,18 +4,23 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import java.util.ArrayList;
 
+import itmp.top.demo.animation.MyAnimation;
 import itmp.top.demo.canvas.CanvasTest;
 import itmp.top.demo.canvas.HandDrawTest;
 import itmp.top.demo.canvas.MatrixView;
@@ -80,12 +85,31 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
         listView.setAdapter(adapter);
 
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        display.getMetrics(displayMetrics);
+
+        listView.setAnimation(new MyAnimation(displayMetrics.widthPixels / 2,
+                displayMetrics.heightPixels / 2, 4000));
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
                 intent.setClassName(getPackageName(), classNames.get(position));
                 startActivity(intent);
+            }
+        });
+
+        listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                view.setBackgroundColor(Color.MAGENTA);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
@@ -107,19 +131,20 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, 1, 0, getString(R.string.demo001_sendmessage)).setIcon(android.R.drawable.ic_menu_mapmode);
         SubMenu subMenu =  menu.addSubMenu(0, 200, 0, getString(R.string.images)).setIcon(android.R.drawable.ic_menu_mapmode);
-        subMenu.add(1, 201, 0, getString(R.string.imagegrid));
-        subMenu.add(1, 202, 0, getString(R.string.picpick));
-        subMenu.add(1, 203, 0, getString(R.string.bitmaptest));
+        subMenu.add(1, 201, 0, getString(R.string.imagegrid)).setIcon(R.drawable.plane);
+        subMenu.add(1, 202, 0, getString(R.string.picpick)).setIcon(R.drawable.plane);
+        subMenu.add(1, 203, 0, getString(R.string.bitmaptest)).setIcon(R.drawable.plane);
         /* move to subMenu
         menu.add(0, 2, 0, getString(R.string.imagegrid)).setIcon(android.R.drawable.ic_menu_mapmode);
         menu.add(0, 3, 0, getString(R.string.picpick)).setIcon(android.R.drawable.ic_menu_mapmode);
         */
-        menu.add(0, 2, 0, getString(R.string.canvastest)).setIcon(android.R.drawable.ic_menu_mapmode);
-        menu.add(0, 3, 0, getString(R.string.handdraw)).setIcon(android.R.drawable.ic_menu_mapmode);
-        menu.add(0, 4, 0, getString(R.string.pinball)).setIcon(android.R.drawable.ic_menu_mapmode);
-        menu.add(0, 5, 0, getString(R.string.matrixview)).setIcon(android.R.drawable.ic_menu_mapmode);
-        menu.add(0, 6, 0, getString(R.string.moveback));
-        menu.add(0, 7, 0, getString(R.string.wraptest));
+        SubMenu subMenu1 = menu.addSubMenu(0, 300, 0, getString(R.string.canvas));
+        subMenu1.add(0, 2, 0, getString(R.string.canvastest)).setIcon(android.R.drawable.ic_menu_mapmode);
+        subMenu1.add(0, 3, 0, getString(R.string.handdraw)).setIcon(android.R.drawable.ic_menu_mapmode);
+        subMenu1.add(0, 4, 0, getString(R.string.pinball)).setIcon(android.R.drawable.ic_menu_mapmode);
+        subMenu1.add(0, 5, 0, getString(R.string.matrixview)).setIcon(android.R.drawable.ic_menu_mapmode);
+        subMenu1.add(0, 6, 0, getString(R.string.moveback)).setIcon(R.drawable.plane);
+        subMenu1.add(0, 7, 0, getString(R.string.wraptest)).setIcon(R.drawable.plane);
         return super.onCreateOptionsMenu(menu);
     }
 
