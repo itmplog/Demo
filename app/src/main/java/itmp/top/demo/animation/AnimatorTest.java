@@ -52,7 +52,7 @@ public class AnimatorTest extends Activity
         public MyAnimationView(Context context)
         {
             super(context);
-            setBackgroundColor(Color.WHITE);
+            setBackgroundColor(Color.argb(0xee, 0xee, 0xee, 0xee));
         }
         @Override
         public boolean onTouchEvent(MotionEvent event)
