@@ -21,6 +21,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import itmp.top.demo.animation.AnimatorTest;
+import itmp.top.demo.animation.BouncingBalls;
 import itmp.top.demo.animation.MyAnimation;
 import itmp.top.demo.canvas.CanvasTest;
 import itmp.top.demo.canvas.HandDrawTest;
@@ -148,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         subMenu1.add(0, 7, 0, getString(R.string.wraptest)).setIcon(R.drawable.plane);
 
         menu.add(0, 400, 0, getString(R.string.animatortest));
+        menu.add(0, 500, 0, getString(R.string.bouncingballs));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -197,6 +199,9 @@ public class MainActivity extends AppCompatActivity {
             case 400:
                 Intent intent10 = new Intent(MainActivity.this, AnimatorTest.class);
                 startActivity(intent10);
+            case 500:
+                Intent intent11 = new Intent(MainActivity.this, BouncingBalls.class);
+                startActivity(intent11);
             default:
             return super.onOptionsItemSelected(item);
         }

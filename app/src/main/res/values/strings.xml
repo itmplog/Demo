@@ -16,4 +16,5 @@
     <string name="wraptest">Wrap Test</string>
     <string name="canvas">Canvas</string>
     <string name="animatortest">AnimatorTest</string>
+    <string name="bouncingballs">BouncingBalls</string>
 </resources>
