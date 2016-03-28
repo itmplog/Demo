@@ -17,4 +17,5 @@
     <string name="canvas">Canvas</string>
     <string name="animatortest">AnimatorTest</string>
     <string name="bouncingballs">BouncingBalls</string>
+    <string name="accelerometertest">Accelerometer Test</string>
 </resources>
