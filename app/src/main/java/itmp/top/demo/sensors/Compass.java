@@ -36,7 +36,6 @@ public class Compass extends AppCompatActivity {
                 SensorManager.SENSOR_DELAY_GAME);
     }
 
-    @Override
     protected void onPause() {
         sensorManager.unregisterListener(sensorEventListener);
         super.onPause();
