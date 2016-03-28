@@ -20,4 +20,5 @@
     <string name="accelerometertest">Accelerometer Test</string>
     <string name="sensortest">Sensor Test</string>
     <string name="compass">Compass</string>
+    <string name="gradienter">Gradienter</string>
 </resources>
