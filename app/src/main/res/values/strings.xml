@@ -21,4 +21,6 @@
     <string name="sensortest">Sensor Test</string>
     <string name="compass">Compass</string>
     <string name="gradienter">Gradienter</string>
+    <string name="allproviderstest">ALl Locations</string>
+    <string name="criteria">Criteria Providers</string>
 </resources>
