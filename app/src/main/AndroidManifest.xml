@@ -136,6 +136,14 @@
         </activity>
         <activity
             android:name=".sensors.SensorTest"
+            android:label="@string/sensortest"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".sensors.Compass"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

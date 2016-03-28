@@ -18,4 +18,5 @@
     <string name="animatortest">AnimatorTest</string>
     <string name="bouncingballs">BouncingBalls</string>
     <string name="accelerometertest">Accelerometer Test</string>
+    <string name="sensortest">Sensor Test</string>
 </resources>
