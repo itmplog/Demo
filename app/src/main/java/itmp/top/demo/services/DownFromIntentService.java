@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -41,12 +43,15 @@ public class DownFromIntentService extends AppCompatActivity {
         );
         relativeLayout.setLayoutParams(layoutParams);
         textView = new TextView(this);
+        textView.setTextColor(Color.BLUE);
+        textView.setBackgroundColor(Color.parseColor("#ffcc22dd"));
         textView.setLayoutParams(layoutParams);
         relativeLayout.addView(textView);
         //setContentView(textView);
         imageView = new ImageView(this);
-        layoutParams.addRule(RelativeLayout.BELOW, textView.getId());
-        imageView.setLayoutParams(layoutParams);
+        RelativeLayout.LayoutParams layoutParams1 = layoutParams;
+        layoutParams1.addRule(RelativeLayout.BELOW, textView.getId());
+        imageView.setLayoutParams(layoutParams1);
         relativeLayout.addView(imageView);
 
         FloatingActionButton floatingActionButton = new FloatingActionButton(this);
