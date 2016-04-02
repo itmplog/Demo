@@ -23,4 +23,6 @@
     <string name="gradienter">Gradienter</string>
     <string name="allproviderstest">ALl Locations</string>
     <string name="criteria">Criteria Providers</string>
+    <string name="downfromservice">DownFromIntentService</string>
+    <string name="downloadactivity">DownloadActivity</string>
 </resources>
