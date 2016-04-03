@@ -39,13 +39,17 @@ public class DownFromIntentService extends AppCompatActivity {
         RelativeLayout relativeLayout = new RelativeLayout(this);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
+                ViewGroup.LayoutParams.MATCH_PARENT
         );
         relativeLayout.setLayoutParams(layoutParams);
+        RelativeLayout.LayoutParams textlp = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
         textView = new TextView(this);
         textView.setTextColor(Color.BLUE);
         textView.setBackgroundColor(Color.parseColor("#ffcc22dd"));
-        textView.setLayoutParams(layoutParams);
+        textView.setLayoutParams(textlp);
         relativeLayout.addView(textView);
         //setContentView(textView);
         imageView = new ImageView(this);
@@ -55,14 +59,20 @@ public class DownFromIntentService extends AppCompatActivity {
         relativeLayout.addView(imageView);
 
         FloatingActionButton floatingActionButton = new FloatingActionButton(this);
-        CoordinatorLayout.LayoutParams lp = new CoordinatorLayout.LayoutParams(
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
-        lp.gravity = Gravity.RIGHT | Gravity.BOTTOM;
-        floatingActionButton.setLayoutParams(lp);
-        floatingActionButton.setBackground(getResources().getDrawable(R.mipmap.ic_launcher, getTheme()));
 
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+        lp.bottomMargin = 16;
+        lp.rightMargin = 16;
+        //lp.setMarginEnd(16);
+        floatingActionButton.setLayoutParams(lp);
+        //floatingActionButton.setBackground(getResources().getDrawable(R.mipmap.ic_launcher, getTheme()));
+        floatingActionButton.setImageResource(R.mipmap.ic_launcher);
+        floatingActionButton.setBackground(getResources().getDrawable(R.color.colorAccent, getTheme()));
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

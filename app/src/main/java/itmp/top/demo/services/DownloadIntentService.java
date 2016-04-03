@@ -67,6 +67,7 @@ public class DownloadIntentService extends IntentService {
             Log.v(TAG, "tmp: " + new String(bytes));
 
             // save to file
+
             File file = new File(Environment.getExternalStorageDirectory() + File.separator + "aa.base");
             FileOutputStream fileOutputStream =  new FileOutputStream(file);
             fileOutputStream.write(byteArrayOutputStream.toByteArray());
